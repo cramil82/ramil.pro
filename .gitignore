@@ -1,5 +1,19 @@
+# Sistema operativo
 .DS_Store
-.claude/
+Thumbs.db
+desktop.ini
+
+# Archivos de editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos temporales
+*.tmp
+*.bak
+
+# Archivos de desarrollo / privados
 *.zip
 ideas.docx
 Tabajos Entregables.pdf
