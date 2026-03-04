@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — Carlos Ramil · Reserva tu llamada de 30 minutos</title>
+  <meta name="description" content="Reserva tu llamada de diagnóstico gratuita de 30 minutos. Analizamos tu negocio y diseñamos un plan de acción real." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .calendly-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .calendly-inline-widget {
+      min-width: 320px;
+      height: 700px;
+    }
+    .contact-split {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .contact-sidebar {
+      position: sticky;
+      top: 96px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .divider-or {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 56px 0 40px;
+      color: var(--text-3);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .divider-or::before, .divider-or::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .contact-quick-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      color: var(--text-2);
+      transition: color 0.2s;
+    }
+    .contact-quick-link:hover { color: var(--accent); }
+    @media (max-width: 900px) {
+      .contact-split { grid-template-columns: 1fr; gap: 40px; }
+      .contact-sidebar { position: static; }
+      .calendly-inline-widget { height: 580px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav scrolled" role="navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Ramil<span>.pro</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="nav-item">
+          <a href="servicios/index.html">
+            Servicios
+            <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="nav-dropdown">
+            <a href="servicios/amazon.html"><span class="nav-dropdown-icon"><i data-lucide="package"></i></span>Amazon</a>
+            <a href="servicios/shopify.html"><span class="nav-dropdown-icon"><i data-lucide="shopping-bag"></i></span>Shopify</a>
+            <a href="servicios/aplicaciones.html"><span class="nav-dropdown-icon"><i data-lucide="bot"></i></span>Aplicaciones &amp; IA</a>
+          </div>
+        </li>
+        <li><a href="contacto.html" class="active">Contacto</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="contacto.html" class="btn btn-primary btn-sm">Llamada Gratuita</a>
+      </div>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="index.html"><i data-lucide="home"></i> Inicio</a>
+    <a href="servicios/index.html"><i data-lucide="briefcase"></i> Servicios</a>
+    <a href="servicios/amazon.html"><i data-lucide="package"></i> Amazon</a>
+    <a href="servicios/shopify.html"><i data-lucide="shopping-bag"></i> Shopify</a>
+    <a href="servicios/aplicaciones.html"><i data-lucide="bot"></i> Aplicaciones &amp; IA</a>
+    <a href="contacto.html"><i data-lucide="mail"></i> Contacto</a>
+    <div class="mobile-cta">
+      <a href="contacto.html" class="btn btn-primary" style="width:100%;justify-content:center;">Llamada Gratuita <i data-lucide="arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="section-eyebrow">Diagnóstico Gratuito</span>
+      <h1>Reserva tu llamada<br><em style="color:var(--accent);font-style:normal;">de 30 minutos.</em></h1>
+      <p>Sin compromiso. Sin ventas agresivas. Analizamos tu negocio, identificamos los cuellos de botella y sales con un plan real que puedes ejecutar desde mañana.</p>
+    </div>
+  </section>
+
+  <!-- ===== CALENDLY + SIDEBAR ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-split">
+
+        <!-- Sidebar -->
+        <div class="contact-sidebar">
+          <div>
+            <span class="section-eyebrow">Lo que incluye</span>
+            <h2 style="font-size:1.7rem;margin-top:12px;line-height:1.2;">30 minutos.<br>Con un plan real al final.</h2>
+            <p style="margin-top:16px;">No es una llamada de ventas. Es un diagnóstico honesto de tu situación con acciones concretas que puedes implementar inmediatamente.</p>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div class="contact-detail">
+              <div class="contact-detail-icon"><i data-lucide="search"></i></div>
+              <div class="contact-detail-text">
+                Analizamos tu situación actual
+                <strong>Amazon, Shopify o tu proyecto online</strong>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon"><i data-lucide="target"></i></div>
+              <div class="contact-detail-text">
+                Identificamos los cuellos de botella
+                <strong>Dónde se pierde el dinero o el potencial</strong>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon"><i data-lucide="clipboard-list"></i></div>
+              <div class="contact-detail-text">
+                Sales con un plan accionable
+                <strong>Pasos concretos para empezar mañana</strong>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon"><i data-lucide="clock"></i></div>
+              <div class="contact-detail-text">
+                Duración y precio
+                <strong>30 minutos · Totalmente gratuita</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Solo para personas comprometidas</h4>
+            <p>Si vas en serio con tu negocio online y quieres estrategia real, esta llamada es para ti. Si no puedo ayudarte, te lo digo directamente.</p>
+          </div>
+
+          <div style="border-top:1px solid var(--border);padding-top:20px;display:flex;flex-direction:column;gap:10px;">
+            <p style="font-size:0.8rem;color:var(--text-3);margin-bottom:4px;">También puedes escribirme directamente</p>
+            <a href="mailto:carlos@ramil.pro" class="contact-quick-link">
+              <i data-lucide="mail"></i> carlos@ramil.pro
+            </a>
+            <a href="https://www.linkedin.com/in/carlos-ramil" target="_blank" rel="noopener" class="contact-quick-link">
+              <i data-lucide="linkedin"></i> linkedin.com/in/carlos-ramil
+            </a>
+            <a href="https://www.instagram.com/cramil_pro" target="_blank" rel="noopener" class="contact-quick-link">
+              <i data-lucide="instagram"></i> @cramil_pro
+            </a>
+          </div>
+
+          <img src="CARLOS-PORTADA.jpg" alt="Carlos Ramil"
+            style="width:100%;max-width:320px;border-radius:var(--radius-lg);object-fit:cover;box-shadow:var(--shadow);border:1px solid var(--border);" />
+        </div>
+
+        <!-- Calendly inline embed -->
+        <div>
+          <div class="calendly-wrapper">
+            <div
+              class="calendly-inline-widget"
+              data-url="https://calendly.com/carlos-ramil?hide_gdpr_banner=1&primary_color=800020"
+            ></div>
+          </div>
+          <p style="font-size:0.76rem;color:var(--text-3);text-align:center;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;">
+            <i data-lucide="shield-check" style="width:14px;height:14px;"></i>
+            Reserva segura a través de Calendly · Confirmación automática por email
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Divider + form -->
+      <div class="divider-or">O si prefieres escribir primero</div>
+
+      <div style="max-width:640px;margin:0 auto;">
+        <div class="contact-form">
+          <h3>Envíame un mensaje</h3>
+          <p>¿Tienes dudas antes de reservar? Cuéntame tu situación y te respondo en menos de 24 horas.</p>
+
+          <form class="js-contact-form" novalidate style="margin-top:24px;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre *</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="tipo">¿En qué puedo ayudarte?</label>
+              <select id="tipo" name="tipo">
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="amazon">Consultoría Amazon</option>
+                <option value="shopify">Consultoría Shopify</option>
+                <option value="web">Web o Landing Page</option>
+                <option value="ia">IA aplicada a negocio</option>
+                <option value="marca">Marca personal</option>
+                <option value="otro">Otro / No sé exactamente</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Tu situación y qué buscas conseguir</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu negocio y qué resultado buscas."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:15px;font-size:1rem;">
+              Enviar mensaje <i data-lucide="send"></i>
+            </button>
+            <p class="form-note">Al enviar aceptas la <a href="#">política de privacidad</a>. Tus datos no se comparten con terceros.</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== GARANTÍA ===== -->
+  <section class="section-sm" style="background:var(--bg-2);border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="grid-3" style="gap:20px;">
+        <div style="text-align:center;padding:24px;">
+          <div style="width:48px;height:48px;background:var(--accent-bg);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent);margin:0 auto 16px;">
+            <i data-lucide="shield-check" class="icon-xl"></i>
+          </div>
+          <h4 style="margin-bottom:8px;">Sin compromiso</h4>
+          <p style="font-size:0.875rem;">La llamada es gratuita y sin obligación de contratar nada.</p>
+        </div>
+        <div style="text-align:center;padding:24px;">
+          <div style="width:48px;height:48px;background:var(--accent-bg);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent);margin:0 auto 16px;">
+            <i data-lucide="calendar-check" class="icon-xl"></i>
+          </div>
+          <h4 style="margin-bottom:8px;">Confirmación inmediata</h4>
+          <p style="font-size:0.875rem;">Recibirás un email de confirmación con el enlace a la videollamada al instante.</p>
+        </div>
+        <div style="text-align:center;padding:24px;">
+          <div style="width:48px;height:48px;background:var(--accent-bg);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent);margin:0 auto 16px;">
+            <i data-lucide="target" class="icon-xl"></i>
+          </div>
+          <h4 style="margin-bottom:8px;">Honestidad ante todo</h4>
+          <p style="font-size:0.875rem;">Si no puedo ayudarte o no es el momento, te lo digo directamente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">Ramil<span>.pro</span></div>
+          <p>Carlos Ramil — Consultor de eCommerce y Marca Personal. Amazon · Shopify · IA.</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/carlos-ramil" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="https://www.instagram.com/cramil_pro" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Servicios</h5>
+          <ul>
+            <li><a href="servicios/amazon.html">Amazon</a></li>
+            <li><a href="servicios/shopify.html">Shopify</a></li>
+            <li><a href="servicios/aplicaciones.html">Aplicaciones &amp; IA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Navegación</h5>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios/index.html">Servicios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <ul>
+            <li><a href="contacto.html">Reservar llamada</a></li>
+            <li><a href="mailto:carlos@ramil.pro">carlos@ramil.pro</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Carlos Ramil · ramil.pro</p>
+        <div class="footer-bottom-links">
+          <a href="#">Aviso legal</a>
+          <a href="#">Política de privacidad</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
