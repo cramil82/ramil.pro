@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(pip3 install:*)",
+      "Bash(/usr/bin/python3:*)",
+      "Bash(/usr/bin/pip3 install:*)",
+      "Bash(brew install:*)",
+      "Bash(open:*)",
+      "Bash(git:*)",
+      "Bash(gh:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}
