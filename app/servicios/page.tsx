@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Package, ShoppingBag, Bot, ArrowRight, Check } from 'lucide-react';
+import { Package, ShoppingBag, Bot, Globe, ArrowRight, Check } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
 import CalendlyButton from '@/components/CalendlyButton';
 
@@ -22,8 +22,9 @@ export default function Servicios() {
 
       <section className="section">
         <div className="container">
-          <div className="grid-3">
+          <div className="grid-2">
             {[
+              { href: '/servicios/webs-negocios', badge: 'Negocio & Servicios', icon: <Globe className="icon-xl" />, title: 'Webs y Negocios', desc: 'Más tráfico, mejor conversión y publicidad rentable para webs de negocio o servicios que necesitan crecer.', items: ['SEO y visibilidad orgánica','Conversión y captación de leads','Publicidad en Google y Meta','Estrategia de crecimiento'] },
               { href: '/servicios/amazon', badge: 'Marketplace líder', icon: <Package className="icon-xl" />, title: 'Amazon', desc: 'Listings optimizados, campañas PPC rentables y posicionamiento real en España, Europa y EEUU.', items: ['SEO de listings y keywords','Gestión y auditoría PPC','A+ Content & Brand Content','Expansión Europa y EEUU'] },
               { href: '/servicios/shopify', badge: 'eCommerce propio', icon: <ShoppingBag className="icon-xl" />, title: 'Shopify', desc: 'SEO técnico, experiencia de usuario, copy de producto e infraestructura de marketing que convierte.', items: ['Auditoría SEO técnica','Optimización de conversión','Shopify Markets','Email marketing y tracking'] },
               { href: '/servicios/aplicaciones', badge: 'Tech & IA', icon: <Bot className="icon-xl" />, title: 'Aplicaciones & IA', desc: 'Landing pages de venta, aplicaciones web a medida e integración de IA que automatiza y escala.', items: ['Webs y landing pages','Chatbots e IA aplicada','GPTs personalizados','Apps web a medida'], neutral: true },

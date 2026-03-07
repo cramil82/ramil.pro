@@ -223,7 +223,7 @@ export default function Home() {
               </Link>
             </FadeIn>
             <FadeIn delay={0.21}>
-              <Link href="/servicios" className="card service-card">
+              <Link href="/servicios/webs-negocios" className="card service-card">
                 <ArrowRight className="card-arrow" />
                 <span className="badge">Negocio &amp; Servicios</span>
                 <div className="card-icon"><Globe className="icon-xl" /></div>

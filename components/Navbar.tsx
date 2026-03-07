@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Package, ShoppingBag, Bot, ArrowRight,
+  Package, ShoppingBag, Bot, Globe, ArrowRight,
   Home, Briefcase, Mail, ChevronDown, TrendingUp
 } from 'lucide-react';
 
@@ -52,6 +52,10 @@ export default function Navbar() {
                 <ChevronDown className="nav-arrow" strokeWidth={2.5} />
               </Link>
               <div className="nav-dropdown">
+                <Link href="/servicios/webs-negocios">
+                  <span className="nav-dropdown-icon"><Globe size={16} /></span>
+                  Webs y Negocios
+                </Link>
                 <Link href="/servicios/amazon">
                   <span className="nav-dropdown-icon"><Package size={16} /></span>
                   Amazon
@@ -86,6 +90,7 @@ export default function Navbar() {
         <Link href="/"><Home size={16} /> Inicio</Link>
         <Link href="/growth-partner"><TrendingUp size={16} /> Growth Partner</Link>
         <Link href="/servicios"><Briefcase size={16} /> Servicios</Link>
+        <Link href="/servicios/webs-negocios"><Globe size={16} /> Webs y Negocios</Link>
         <Link href="/servicios/amazon"><Package size={16} /> Amazon</Link>
         <Link href="/servicios/shopify"><ShoppingBag size={16} /> Shopify</Link>
         <Link href="/servicios/aplicaciones"><Bot size={16} /> Aplicaciones &amp; IA</Link>
