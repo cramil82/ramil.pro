@@ -964,6 +964,62 @@ p { color: var(--text-2); line-height: 1.75; }
   align-items: start;
 }
 
+/* ===== Growth Partner Page ===== */
+.gp-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: start;
+}
+.gp-main h2 { margin: 12px 0 24px; }
+.gp-main p { font-size: 1rem; }
+.gp-aside { position: sticky; top: 88px; }
+.gp-kpi-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+.gp-kpi {
+  padding: 5px 14px;
+  background: var(--accent-bg);
+  border: 1px solid rgba(128, 0, 32, 0.18);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+.gp-no-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.gp-no-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ef4444;
+}
+.gp-no-card h4 { margin-bottom: 10px; }
+.gp-no-card p { font-size: 0.95rem; }
+
+@media (max-width: 900px) {
+  .gp-content-grid { grid-template-columns: 1fr; gap: 32px; }
+  .gp-aside { position: static; }
+}
+
 /* ===== Hero Trust Badge ===== */
 .hero-trust {
   display: inline-flex;
