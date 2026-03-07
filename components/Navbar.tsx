@@ -45,6 +45,7 @@ export default function Navbar() {
           <Link href="/" className="nav-logo">Ramil<span>.pro</span></Link>
           <ul className="nav-links">
             <li><Link href="/" className={isActive('/') ? 'active' : ''}>Inicio</Link></li>
+            <li><Link href="/growth-partner" className={isActive('/growth-partner') ? 'active' : ''}>Growth Partner</Link></li>
             <li className="nav-item">
               <Link href="/servicios" className={isActive('/servicios') ? 'active' : ''}>
                 Servicios
@@ -65,7 +66,6 @@ export default function Navbar() {
                 </Link>
               </div>
             </li>
-            <li><Link href="/growth-partner" className={isActive('/growth-partner') ? 'active' : ''}>Growth Partner</Link></li>
             <li><Link href="/contacto" className={isActive('/contacto') ? 'active' : ''}>Contacto</Link></li>
           </ul>
           <div className="nav-cta">
@@ -84,11 +84,11 @@ export default function Navbar() {
 
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`} role="dialog" aria-label="Menú móvil">
         <Link href="/"><Home size={16} /> Inicio</Link>
+        <Link href="/growth-partner"><TrendingUp size={16} /> Growth Partner</Link>
         <Link href="/servicios"><Briefcase size={16} /> Servicios</Link>
         <Link href="/servicios/amazon"><Package size={16} /> Amazon</Link>
         <Link href="/servicios/shopify"><ShoppingBag size={16} /> Shopify</Link>
         <Link href="/servicios/aplicaciones"><Bot size={16} /> Aplicaciones &amp; IA</Link>
-        <Link href="/growth-partner"><TrendingUp size={16} /> Growth Partner</Link>
         <Link href="/contacto"><Mail size={16} /> Contacto</Link>
         <div className="mobile-cta">
           <Link href="/contacto" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
