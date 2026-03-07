@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <div className="footer-logo">Ramil<span>.pro</span></div>
-            <p>Carlos Ramil — Growth Partner Online. Ayudo a marcas y negocios a crecer y vender más: webs, Amazon, Shopify y marketplaces. España, Europa y EEUU.</p>
+            <p>Carlos Ramil — Growth Partner Online. Ayudo a marcas y negocios a crecer y vender más en su negocio online.</p>
             <div className="social-links">
               <a href="https://www.linkedin.com/in/carlos-ramil" target="_blank" rel="noopener" className="social-link" aria-label="LinkedIn">
                 <Linkedin size={18} />
