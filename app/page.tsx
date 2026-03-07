@@ -3,24 +3,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   Package, ShoppingBag, Bot, ArrowRight, Zap,
-  TrendingDown, Banknote, ShoppingCart, Compass, RefreshCw, BarChart2,
-  Rocket, User, Check
+  TrendingDown, ShoppingCart, Compass, RefreshCw, BarChart2,
+  Rocket, TrendingUp, Users, Globe,
 } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
 import FaqAccordion from '@/components/FaqAccordion';
 import CalendlyButton from '@/components/CalendlyButton';
 
 export const metadata: Metadata = {
-  title: 'Carlos Ramil — Consultor eCommerce · Amazon · Shopify · ramil.pro',
-  description: 'Consultor especializado en Amazon, Shopify y eCommerce. Estrategia real, datos y resultados medibles. Reserva tu diagnóstico gratuito.',
+  title: 'Carlos Ramil | Growth Partner Online',
+  description: 'Ayudo a marcas a crecer y aumentar ventas a nivel online: Canal directo, Tiendas Shopify, cuentas de Amazon y marketplaces. Estrategia real, resultados medibles. Diagnóstico gratuito en 30 min.',
 };
 
 const faqItems = [
-  { question: '¿Necesito tener ya un negocio montado para trabajar contigo?', answer: 'No. Trabajo tanto con personas que quieren lanzarse desde cero como con sellers y tiendas que ya existen y quieren escalar. Cada punto de partida tiene su estrategia.' },
-  { question: '¿Cuánto tiempo tarda en verse resultados?', answer: 'Depende de la palanca que accionemos. En Amazon SEO, los primeros resultados son visibles en 2–4 semanas. En PPC, en días. La llamada de diagnóstico sirve para establecer expectativas realistas según tu caso concreto.' },
-  { question: '¿Haces tú el trabajo o me enseñas a hacerlo yo?', answer: 'Ambas cosas, según lo que necesites. Puedo hacer consultoría donde yo ejecuto la estrategia, o mentoría donde te enseño a implementarla tú. Lo decidimos en la llamada inicial.' },
-  { question: '¿Trabajas con Amazon fuera de España?', answer: 'Sí. Tengo experiencia gestionando cuentas en toda Europa (DE, FR, IT, UK) y en EEUU. Si ya vendes en España y quieres expandirte, es uno de los movimientos con mayor ROI que puedes hacer.' },
-  { question: '¿Cómo reservo la llamada de diagnóstico gratuita?', answer: 'Haz clic en el botón de abajo, rellena el formulario breve con tu situación actual y elige el hueco que mejor te venga. Te confirmo en menos de 24 horas.' },
+  { question: '¿En qué se diferencia un Growth Partner de un consultor?', answer: 'Un consultor te da recomendaciones. Yo me implico en la ejecución y me mido por resultados de negocio, no por horas facturadas. Trabajo contigo como si fuera socio tuyo — con visión de todos los canales al mismo tiempo.' },
+  { question: '¿Necesito tener ya todos los canales activos para trabajar contigo?', answer: 'No. Trabajo con marcas en distintos momentos: desde las que quieren lanzar su primer canal hasta las que ya tienen Amazon, Shopify y marketplaces funcionando pero sin estrategia común.' },
+  { question: '¿Cuánto tiempo tarda en verse resultados?', answer: 'Depende de la palanca que accionemos. En Amazon SEO los primeros resultados son visibles en 2–4 semanas. En PPC, en días. La llamada de diagnóstico sirve para establecer expectativas realistas según tu caso.' },
+  { question: '¿Trabajas con marcas fuera de España?', answer: 'Sí. Tengo experiencia gestionando canales en toda Europa (DE, FR, IT, UK) y en EEUU. Si ya vendes en España y quieres expandirte, es uno de los movimientos con mayor ROI que puedes hacer.' },
+  { question: '¿Cómo funciona el diagnóstico gratuito?', answer: 'Son 30 minutos donde analizamos tu situación actual, identificamos los cuellos de botella y vemos si tiene sentido trabajar juntos. Sin rodeos. Con valor real desde el minuto uno.' },
 ];
 
 export default function Home() {
@@ -32,15 +32,15 @@ export default function Home() {
           <div className="hero-content">
             <div className="hero-badge">
               <span className="hero-badge-dot"></span>
-              Consultor de eCommerce · España, Europa &amp; EEUU
+              Growth Partner online · España, Europa &amp; EEUU
             </div>
             <h1 className="hero-title">
-              Deja de sobrevivir<br />
-              en Amazon y Shopify.<br />
-              <em>Empieza a dominarlos.</em>
+              Tu negocio online<br />
+              vende.<br />
+              <em>Pero podría vender mucho más.</em>
             </h1>
             <p className="hero-subtitle">
-              Soy Carlos Ramil. He gestionado cuentas de Amazon en España, Europa y EEUU. He escalado tiendas Shopify desde cero. No te vendo humo: te doy estrategia, datos y un plan que puedes ejecutar mañana.
+              Trabajo contigo como Growth Partner: analizo todos tus canales, identifico dónde se está perdiendo dinero, y ejecuto el plan para recuperarlo.
             </p>
             <div className="hero-actions">
               <CalendlyButton className="btn btn-primary btn-lg">
@@ -48,21 +48,40 @@ export default function Home() {
               </CalendlyButton>
               <Link href="/servicios" className="btn btn-secondary btn-lg">Ver servicios</Link>
             </div>
-            <div className="hero-stats">
-              <div><span className="hero-stat-num">ES · EU · US</span><span className="hero-stat-label">Mercados Amazon</span></div>
-              <div><span className="hero-stat-num">3</span><span className="hero-stat-label">Áreas de expertise</span></div>
-              <div><span className="hero-stat-num">15 min</span><span className="hero-stat-label">Diagnóstico gratuito</span></div>
+            <div className="hero-trust">
+              <Zap size={14} />
+              Resultados desde el primer mes · Estrategia real, no teoría
             </div>
           </div>
           <div className="hero-image">
-            <Image src="/FOTO_PORTADA.jpg" alt="Carlos Ramil — Consultor eCommerce" width={520} height={600} priority />
+            <Image src="/FOTO_PORTADA.jpg" alt="Carlos Ramil — Growth Partner Online" width={520} height={600} priority />
             <div className="hero-image-badge">
               <span className="hero-image-badge-icon"><Zap className="icon-lg" /></span>
               <div className="hero-image-badge-text">
-                <strong>Resultados desde el día 1</strong>
+                <strong>Resultados desde el primer mes</strong>
                 Estrategia real, no teoría
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MÉTRICAS */}
+      <section className="section-sm metrics-section">
+        <div className="container">
+          <div className="metrics-grid">
+            {[
+              { num: '×3,4', label: 'Crecimiento en Amazon', desc: 'De 500K a 1,7M€ en canal de una marca líder nacional' },
+              { num: '×3,25', label: 'Canal Shopify propio', desc: 'Sin invertir un euro en publicidad de pago' },
+              { num: '×5', label: 'Marketplace emergente', desc: 'Lanzado y escalado desde prácticamente cero' },
+              { num: '#1 EU', label: 'Proveedor en Groupon', desc: 'Mayor proveedor europeo — negocio propio construido desde cero' },
+            ].map((m, i) => (
+              <FadeIn key={i} className="metric-card" delay={i * 0.07}>
+                <span className="metric-num">{m.num}</span>
+                <span className="metric-label">{m.label}</span>
+                <span className="metric-desc">{m.desc}</span>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
@@ -73,20 +92,20 @@ export default function Home() {
           <div className="pain-grid">
             <div>
               <span className="section-eyebrow">¿Te suena esto?</span>
-              <h2>Seguramente ya lo has<br />intentado todo.</h2>
-              <p style={{ marginTop: 16 }}>Has leído artículos, visto vídeos de YouTube, hecho algún curso… Y aun así, el negocio no despega. El problema no eres tú. El problema es que nadie te ha dado una estrategia real adaptada a tu negocio.</p>
-              <CalendlyButton className="btn btn-primary" style={{ marginTop: 32 }}>
+              <h2>Seguramente ya lo has<br />intentado resolver solo.</h2>
+              <p style={{ marginTop: 16, marginBottom: 32 }}>No es falta de trabajo ni de ganas. Es que falta visión de conjunto y un plan que tenga en cuenta todos los canales al mismo tiempo. Para eso trabajo yo.</p>
+              <CalendlyButton className="btn btn-primary">
                 Hablemos <ArrowRight size={16} />
               </CalendlyButton>
             </div>
             <div className="pain-list">
               {[
-                { icon: <TrendingDown size={20} />, text: 'Tu listing en Amazon tiene pocas visitas y peor conversión' },
-                { icon: <Banknote size={20} />, text: 'Inviertes en PPC y el dinero desaparece sin resultados claros' },
-                { icon: <ShoppingCart size={20} />, text: 'Tu tienda Shopify tiene tráfico pero nadie compra' },
-                { icon: <Compass size={20} />, text: 'No sabes por dónde empezar a vender online y el miedo te paraliza' },
-                { icon: <RefreshCw size={20} />, text: 'Llevas meses dando vueltas sin avanzar de verdad' },
-                { icon: <BarChart2 size={20} />, text: 'Tu ACoS está por las nubes y no sabes cómo bajarlo' },
+                { icon: <BarChart2 size={20} />, text: 'Tus canales venden, pero cada uno va por su cuenta. No hay estrategia común y sientes que se están "comiendo" entre ellos.' },
+                { icon: <TrendingDown size={20} />, text: 'Tu Amazon tiene tráfico pero el ACoS no baja. Pagas más en PPC cada mes y el margen se encoge.' },
+                { icon: <ShoppingCart size={20} />, text: 'Tu tienda en Shopify convierte poco. No sabes si es el tráfico, el diseño o el precio — y no tienes tiempo para averiguarlo.' },
+                { icon: <Compass size={20} />, text: 'No tienes claro si escalar más en Amazon, abrir nuevos marketplaces o apostar fuerte por el canal directo. Las tres opciones cuestan dinero y tiempo.' },
+                { icon: <RefreshCw size={20} />, text: 'Llevas meses dando vueltas a lo mismo. Las cosas mejoran un poco, pero nunca dan el salto que esperas.' },
+                { icon: <Globe size={20} />, text: 'Tienes una web de negocio o servicios que no genera leads. Tienes visitas pero nadie contacta, y no sabes si el problema es el copy, el SEO o la estructura.' },
               ].map((item, i) => (
                 <FadeIn key={i} className="pain-item" delay={i * 0.07}>
                   <span className="pain-icon">{item.icon}</span>
@@ -98,56 +117,72 @@ export default function Home() {
         </div>
       </section>
 
-      {/* QUIÉN SOY */}
+      {/* MI HISTORIA */}
       <section className="section" id="sobre-mi">
         <div className="container">
-          <div className="about-inner">
-            <div className="about-image">
-              <Image src="/FOTO_PORTADA.jpg" alt="Carlos Ramil" width={400} height={480} />
-              <div className="about-tags">
-                <span className="tag">Amazon SEO</span>
-                <span className="tag">Shopify</span>
-                <span className="tag">PPC</span>
-                <span className="tag">IA</span>
-              </div>
-            </div>
-            <div className="about-content">
-              <span className="section-eyebrow">Quién soy</span>
-              <h2>No soy otro consultor<br />de PowerPoints.</h2>
-              <p style={{ marginTop: 20 }}>Soy Carlos Ramil. He trabajado en las trincheras del ecommerce, no desde un despacho con teorías bonitas, sino optimizando listings reales, gestionando presupuestos de PPC reales y resolviendo problemas reales de sellers y tiendas online en España, Europa y EEUU.</p>
-              <p style={{ marginTop: 16 }}>Mi enfoque: analizo lo que tienes, identifico dónde se pierde el dinero o el potencial, y te doy un plan para arreglarlo con métricas reales y pasos accionables desde el día uno.</p>
-              <div className="skills">
-                {['Amazon SEO','Amazon PPC','Shopify SEO','CRO & Conversión','Shopify Markets','IA aplicada','Miravia','Marca personal'].map(s => (
-                  <span key={s} className="skill">{s}</span>
-                ))}
-              </div>
-            </div>
+          <div className="section-header">
+            <span className="section-eyebrow">Quién soy</span>
+            <h2>He estado donde tú estás.<br /><em>Y también donde quieres llegar.</em></h2>
+          </div>
+          <div className="history-chapters">
+            {[
+              {
+                icon: <Rocket className="icon-xl" />,
+                chapter: 'Capítulo 1',
+                title: 'El emprendedor',
+                text: 'Empecé construyendo mi propio negocio desde cero. Sin inversión externa. Sin manual de instrucciones. Aprendí a vender online cuando nadie hablaba todavía de eCommerce en España. Trabajé con Groupon, Letsbonus, Groupalia y decenas de plataformas más, llegamos a ser el mayor proveedor europeo en Groupon. Construí el negocio canal por canal, cometí los errores que cuestan dinero de verdad, y aprendí lo que se rompe cuando creces demasiado rápido sin los cimientos correctos. Esa experiencia vale más que cualquier certificación.',
+              },
+              {
+                icon: <TrendingUp className="icon-xl" />,
+                chapter: 'Capítulo 2',
+                title: 'El gestor de marca',
+                text: 'Luego vine a trabajar desde dentro de una marca líder nacional. En tres años, tripliqué la cuenta de Amazon — de 500.000€ a 1.700.000€. Multipliqué por más de tres el canal Shopify sin invertir un euro en publicidad de pago. Y pusimos en marcha el canal de Miravia, que pasó de casi nada a cinco veces su tamaño inicial. Cada canal con su estrategia propia, pero todos empujando en la misma dirección: hacer crecer el negocio.',
+              },
+              {
+                icon: <Users className="icon-xl" />,
+                chapter: 'Capítulo 3',
+                title: 'El Growth Partner',
+                text: 'Ahora trabajo de forma independiente. No vengo a gestionar una herramienta ni a venderte horas de consultoría. Vengo a entender tu negocio, a identificar dónde está el dinero que no estás captando, y a construir contigo el plan concreto para ir a por él. Como si fuera socio tuyo — pero sin tener que contratarme a jornada completa.',
+              },
+            ].map((ch, i) => (
+              <FadeIn key={i} className="history-chapter" delay={i * 0.1}>
+                <div className="history-chapter-icon">{ch.icon}</div>
+                <div className="history-chapter-content">
+                  <span className="history-chapter-label">{ch.chapter}</span>
+                  <h3>{ch.title}</h3>
+                  <p>{ch.text}</p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* PARA QUIÉN */}
+      {/* CASO DE ÉXITO */}
       <section className="section" style={{ background: 'var(--bg-2)' }}>
         <div className="container">
           <div className="section-header">
-            <span className="section-eyebrow">Para quién es esto</span>
-            <h2>Trabajo contigo si eres…</h2>
-            <p>Cada perfil tiene sus retos específicos. Aquí es donde entro yo.</p>
+            <span className="section-eyebrow">Caso de éxito</span>
+            <h2>Como tripliqué las ventas de una<br />marca líder de audio en España</h2>
+            <p>Una marca consolidada con canales online funcionando de forma aislada. Sin estrategia común, el margen se estaba viendo presionado por un PPC sin control de rentabilidad.</p>
           </div>
-          <div className="grid-2">
+          <div className="case-results">
             {[
-              { icon: <Package className="icon-xl" />, title: 'Seller de Amazon', text: 'Tus ventas están estancadas, tu ACoS está por las nubes o quieres escalar sin perder el control. Te ayudo a optimizar listings, afinar tus campañas PPC y posicionarte mejor que tu competencia.' },
-              { icon: <ShoppingBag className="icon-xl" />, title: 'Dueño de tienda Shopify', text: 'Tienes tráfico o estás invirtiendo para conseguirlo, pero las conversiones no llegan. Algo falla en la tienda, el copy, el SEO o los anuncios. Lo encontramos juntos y lo arreglamos.' },
-              { icon: <Rocket className="icon-xl" />, title: 'Emprendedor online', text: 'Quieres montar un negocio en Amazon o crear tu propia tienda pero no sabes por dónde empezar. Te ahorro meses de errores costosos con una hoja de ruta clara desde el día uno.' },
-              { icon: <User className="icon-xl" />, title: 'Profesional con marca personal', text: 'Quieres posicionarte como referente en tu sector en LinkedIn o Instagram y que eso genere oportunidades reales de negocio, no solo likes.', neutral: true },
-            ].map((item, i) => (
-              <FadeIn key={i} className="card" delay={i * 0.07}>
-                <div className={`card-icon${item.neutral ? ' neutral' : ''}`}>{item.icon}</div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
+              { channel: 'Amazon', from: '500.000 €/año', to: '1.700.000 €/año', pct: '+240%', note: 'SEO + PPC + estrategia de canal' },
+              { channel: 'Shopify (canal directo)', from: '20.000 €/año', to: '65.000 €/año', pct: '+225%', note: 'Sin publicidad de pago' },
+              { channel: 'Miravia (marketplace)', from: '5.000 €/año', to: '25.000 €/año', pct: '+400%', note: 'Lanzamiento y escala desde cero' },
+            ].map((r, i) => (
+              <FadeIn key={i} className="case-card" delay={i * 0.1}>
+                <span className="case-channel">{r.channel}</span>
+                <span className="case-from">{r.from}</span>
+                <ArrowRight size={16} className="case-arrow" />
+                <span className="case-to">{r.to}</span>
+                <span className="case-pct">{r.pct}</span>
+                <span className="case-note">{r.note}</span>
               </FadeIn>
             ))}
           </div>
+          <p className="case-footer">El resultado más relevante no son los números individuales: es que los tres canales crecieron de forma coordinada, sin canibalizarse entre sí y con márgenes protegidos.</p>
         </div>
       </section>
 
@@ -156,26 +191,26 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <span className="section-eyebrow">Servicios</span>
-            <h2>Elige tu área de trabajo</h2>
-            <p>Me centro en la consultoría estratégica en tres áreas clave. Sin plantillas genéricas: cada plan está adaptado a tu negocio.</p>
+            <h2>Todos los canales. Una sola estrategia.</h2>
+            <p>Trabajo los canales por separado para optimizarlos, pero siempre con visión de conjunto. Cada canal debe empujar en la misma dirección.</p>
           </div>
-          <div className="grid-3">
+          <div className="grid-2">
             <FadeIn delay={0}>
               <Link href="/servicios/amazon" className="card service-card">
                 <ArrowRight className="card-arrow" />
                 <span className="badge">Marketplace</span>
                 <div className="card-icon"><Package className="icon-xl" /></div>
                 <h3>Amazon</h3>
-                <p>SEO de listings, PPC y publicidad, auditorías, A+ Content, expansión europea. Estrategia de seller completa.</p>
+                <p>SEO de listings, PPC y publicidad, auditorías, A+ Content, expansión europea. Estrategia de canal completa.</p>
               </Link>
             </FadeIn>
             <FadeIn delay={0.07}>
               <Link href="/servicios/shopify" className="card service-card">
                 <ArrowRight className="card-arrow" />
-                <span className="badge">eCommerce</span>
+                <span className="badge">Canal directo</span>
                 <div className="card-icon"><ShoppingBag className="icon-xl" /></div>
                 <h3>Shopify</h3>
-                <p>SEO orgánico, optimización de conversión, funcionalidades técnicas, tracking y email marketing.</p>
+                <p>SEO orgánico, optimización de conversión, arquitectura de contenidos, tracking y email marketing.</p>
               </Link>
             </FadeIn>
             <FadeIn delay={0.14}>
@@ -184,7 +219,16 @@ export default function Home() {
                 <span className="badge">Tech &amp; IA</span>
                 <div className="card-icon neutral"><Bot className="icon-xl" /></div>
                 <h3>Aplicaciones &amp; IA</h3>
-                <p>Webs a medida, landing pages de venta, chatbots, GPTs personalizados e integración de IA en tu negocio.</p>
+                <p>Webs a medida, chatbots, GPTs personalizados e integración de IA en procesos de negocio.</p>
+              </Link>
+            </FadeIn>
+            <FadeIn delay={0.21}>
+              <Link href="/servicios" className="card service-card">
+                <ArrowRight className="card-arrow" />
+                <span className="badge">Negocio &amp; Servicios</span>
+                <div className="card-icon"><Globe className="icon-xl" /></div>
+                <h3>Web &amp; Ventas Online</h3>
+                <p>SEO, copy y arquitectura para webs de negocio o servicios que necesitan generar más leads y clientes de forma constante.</p>
               </Link>
             </FadeIn>
           </div>
@@ -201,8 +245,8 @@ export default function Home() {
           </div>
           <div className="process-steps">
             {[
-              { n: 1, title: 'Reserva tu llamada de diagnóstico gratuita', text: '30 minutos donde analizamos tu situación actual, identificamos los cuellos de botella y vemos si podemos trabajar juntos. Sin rodeos. Con valor real desde el minuto uno.' },
-              { n: 2, title: 'Diseño tu estrategia personalizada', text: 'No hay plantillas genéricas aquí. Cada negocio es diferente. Creo un plan específico para tu situación, tus objetivos y tu presupuesto.' },
+              { n: 1, title: 'Diagnóstico gratuito en 30 minutos', text: 'Analizamos tu situación actual, identificamos los cuellos de botella y vemos si tiene sentido trabajar juntos. Sin rodeos. Con valor real desde el minuto uno.' },
+              { n: 2, title: 'Plan de crecimiento personalizado', text: 'No hay plantillas genéricas. Cada negocio es diferente. Creo un plan específico para tu situación, tus canales y tus objetivos.' },
               { n: 3, title: 'Ejecutamos y medimos', text: 'Implementamos la estrategia con seguimiento real de métricas. Ajustamos, iteramos y escalamos lo que funciona.' },
             ].map((step, i) => (
               <FadeIn key={i} className="process-step" delay={i * 0.07}>
@@ -232,12 +276,12 @@ export default function Home() {
       <section className="cta-section">
         <div className="cta-section-inner">
           <span className="section-eyebrow">¿Listo para avanzar?</span>
-          <h2>Listo para dejar de improvisar.</h2>
-          <p>Reserva tu llamada ahora. Es gratuita. Son 30 minutos. No te prometo milagros: te prometo estrategia real, feedback directo y un plan que puedes ejecutar desde mañana. Sin rodeos. Sin relleno.</p>
+          <h2>¿Tu negocio online está dejando dinero sobre la mesa?</h2>
+          <p>En 30 minutos te digo si puedo ayudarte — y si no puedo, también. Sin compromiso, sin pitch de ventas.</p>
           <CalendlyButton className="btn btn-primary btn-lg">
-            Quiero mi Diagnóstico Gratuito <ArrowRight className="icon-lg" />
+            Reservar diagnóstico gratuito <ArrowRight className="icon-lg" />
           </CalendlyButton>
-          <p className="cta-disclaimer">Plazas limitadas. Solo para personas comprometidas con su negocio online.</p>
+          <p className="cta-disclaimer">100% gratuito · Sin compromiso · Respuesta en menos de 24h</p>
         </div>
       </section>
     </>
