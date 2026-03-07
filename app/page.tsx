@@ -32,15 +32,15 @@ export default function Home() {
           <div className="hero-content">
             <div className="hero-badge">
               <span className="hero-badge-dot"></span>
-              Growth Partner online · España, Europa &amp; EEUU
+              Growth Partner online para la mejora de tu proyecto
             </div>
             <h1 className="hero-title">
-              Tu negocio online<br />
-              vende.<br />
-              <em>Pero podría vender mucho más.</em>
+              Tus ventas online<br />
+              no están donde<br />
+              <em>podrían estar.</em>
             </h1>
             <p className="hero-subtitle">
-              Trabajo contigo como Growth Partner: analizo todos tus canales, identifico dónde se está perdiendo dinero, y ejecuto el plan para recuperarlo.
+              Cada mes sin la estrategia correcta es dinero que se queda en el bolsillo de tu competencia. Trabajo contigo para identificar exactamente qué está fallando y ejecutar el plan para arreglarlo.
             </p>
             <div className="hero-actions">
               <CalendlyButton className="btn btn-primary btn-lg">
@@ -276,7 +276,7 @@ export default function Home() {
       <section className="cta-section">
         <div className="cta-section-inner">
           <span className="section-eyebrow">¿Listo para avanzar?</span>
-          <h2>¿Tu negocio online está dejando dinero sobre la mesa?</h2>
+          <h2>¿Tu negocio online te está dando los resultados que deseas?</h2>
           <p>En 30 minutos te digo si puedo ayudarte — y si no puedo, también. Sin compromiso, sin pitch de ventas.</p>
           <CalendlyButton className="btn btn-primary btn-lg">
             Reservar diagnóstico gratuito <ArrowRight className="icon-lg" />

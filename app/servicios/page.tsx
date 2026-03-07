@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Package, ShoppingBag, Bot, Globe, ArrowRight, Check } from 'lucide-react';
+import { Globe, Package, ShoppingBag, Bot, ArrowRight, Check } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
 import CalendlyButton from '@/components/CalendlyButton';
 
 export const metadata: Metadata = {
-  title: 'Servicios — Consultor eCommerce',
-  description: 'Consultoría especializada en Amazon, Shopify y aplicaciones personalizadas. Estrategia real para tu negocio online.',
+  title: 'Servicios — Growth Partner Online',
+  description: 'Webs y negocios, Amazon, Shopify y aplicaciones. Estrategia de crecimiento real para tu negocio online: más tráfico, más conversión, más ventas.',
 };
 
 export default function Servicios() {
@@ -14,9 +14,9 @@ export default function Servicios() {
     <>
       <section className="page-hero">
         <div className="page-hero-inner">
-          <span className="section-eyebrow">Lo que hago</span>
-          <h1>Consultoría <em style={{ color: 'var(--accent)', fontStyle: 'normal' }}>real</em> para negocios reales</h1>
-          <p>Sin plantillas genéricas. Sin teorías vacías. Cada estrategia está diseñada específicamente para tu negocio, tus objetivos y tu mercado.</p>
+          <span className="section-eyebrow">Servicios</span>
+          <h1>No gestiono canales.<br /><em style={{ color: 'var(--accent)', fontStyle: 'normal' }}>Hago crecer negocios.</em></h1>
+          <p>Cada servicio está diseñado para un canal concreto, pero siempre con visión de conjunto. El objetivo no es "hacer cosas": es mover los números que importan.</p>
         </div>
       </section>
 
@@ -24,10 +24,39 @@ export default function Servicios() {
         <div className="container">
           <div className="grid-2">
             {[
-              { href: '/servicios/webs-negocios', badge: 'Negocio & Servicios', icon: <Globe className="icon-xl" />, title: 'Webs y Negocios', desc: 'Más tráfico, mejor conversión y publicidad rentable para webs de negocio o servicios que necesitan crecer.', items: ['SEO y visibilidad orgánica','Conversión y captación de leads','Publicidad en Google y Meta','Estrategia de crecimiento'] },
-              { href: '/servicios/amazon', badge: 'Marketplace líder', icon: <Package className="icon-xl" />, title: 'Amazon', desc: 'Listings optimizados, campañas PPC rentables y posicionamiento real en España, Europa y EEUU.', items: ['SEO de listings y keywords','Gestión y auditoría PPC','A+ Content & Brand Content','Expansión Europa y EEUU'] },
-              { href: '/servicios/shopify', badge: 'eCommerce propio', icon: <ShoppingBag className="icon-xl" />, title: 'Shopify', desc: 'SEO técnico, experiencia de usuario, copy de producto e infraestructura de marketing que convierte.', items: ['Auditoría SEO técnica','Optimización de conversión','Shopify Markets','Email marketing y tracking'] },
-              { href: '/servicios/aplicaciones', badge: 'Tech & IA', icon: <Bot className="icon-xl" />, title: 'Aplicaciones & IA', desc: 'Landing pages de venta, aplicaciones web a medida e integración de IA que automatiza y escala.', items: ['Webs y landing pages','Chatbots e IA aplicada','GPTs personalizados','Apps web a medida'], neutral: true },
+              {
+                href: '/servicios/webs-negocios',
+                badge: 'Negocio & Servicios',
+                icon: <Globe className="icon-xl" />,
+                title: 'Webs y Negocios',
+                desc: 'Más tráfico, mejor conversión y publicidad rentable para webs de negocio o servicios. SEO, CRO, Google Ads, Meta Ads y estrategia de captación de leads.',
+                items: ['SEO y visibilidad orgánica', 'Conversión y captación de leads', 'Publicidad en Google y Meta', 'Estrategia de crecimiento'],
+              },
+              {
+                href: '/servicios/amazon',
+                badge: 'Marketplace líder',
+                icon: <Package className="icon-xl" />,
+                title: 'Amazon',
+                desc: 'Listings optimizados, campañas PPC rentables y posicionamiento real en España, Europa y EEUU. ACoS bajo control y márgenes protegidos.',
+                items: ['SEO de listings y keywords', 'Gestión y auditoría PPC', 'A+ Content & Brand Content', 'Expansión Europa y EEUU'],
+              },
+              {
+                href: '/servicios/shopify',
+                badge: 'Canal directo',
+                icon: <ShoppingBag className="icon-xl" />,
+                title: 'Shopify',
+                desc: 'SEO técnico, experiencia de usuario, copy de producto e infraestructura de marketing. Canal directo que convierte y no depende de marketplaces.',
+                items: ['Auditoría SEO técnica', 'Optimización de conversión', 'Shopify Markets', 'Email marketing y tracking'],
+              },
+              {
+                href: '/servicios/aplicaciones',
+                badge: 'Tech & IA',
+                icon: <Bot className="icon-xl" />,
+                title: 'Aplicaciones & IA',
+                desc: 'Webs a medida, landing pages de venta e integración de IA que automatiza procesos y escala tu negocio sin escalar el equipo.',
+                items: ['Webs y landing pages', 'Chatbots e IA aplicada', 'GPTs personalizados', 'Apps web a medida'],
+                neutral: true,
+              },
             ].map((s, i) => (
               <FadeIn key={i} delay={i * 0.07}>
                 <Link href={s.href} className="card service-card">
@@ -54,19 +83,25 @@ export default function Servicios() {
         <div className="container">
           <div className="grid-2" style={{ alignItems: 'center', gap: 64 }}>
             <div>
-              <span className="section-eyebrow">Mi enfoque</span>
-              <h2>La consultoría como debería ser siempre.</h2>
-              <p style={{ marginTop: 16 }}>No cobro por "estar disponible". Cobro por entregar resultados concretos. Cada proyecto empieza con un diagnóstico honesto: si no puedo ayudarte, te lo digo.</p>
+              <span className="section-eyebrow">El enfoque Growth Partner</span>
+              <h2>Lo que cambia cuando trabajas con un socio, no con un proveedor.</h2>
+              <p style={{ marginTop: 16 }}>No cobro por "estar disponible" ni por entregar informes. Me implico en la ejecución, me mido por los mismos KPIs que tú y trabajo como si el negocio fuera mío. Esa es la diferencia entre un consultor y un Growth Partner.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 32 }}>
-                <div className="highlight-box"><h4>Basado en datos, no en tendencias</h4><p>Cada decisión se toma con métricas reales: keywords con volumen, ACoS por campaña, tasa de conversión por página.</p></div>
-                <div className="highlight-box"><h4>Ejecutable desde el día uno</h4><p>No recibirás un PDF de 80 páginas que nadie implementa. Recibirás un plan de acción claro, priorizado y con pasos concretos.</p></div>
+                <div className="highlight-box">
+                  <h4>Visión de conjunto, no de canal</h4>
+                  <p>Analizo todos tus canales al mismo tiempo porque el cuello de botella rara vez está donde crees que está.</p>
+                </div>
+                <div className="highlight-box">
+                  <h4>Resultados, no entregables</h4>
+                  <p>No recibirás un PDF de 80 páginas. Recibirás un plan ejecutable, priorizado y con métricas concretas desde el primer día.</p>
+                </div>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
-                { num: 'ES · EU · US', title: 'Mercados de Amazon', text: 'Experiencia en España, Europa (DE, FR, IT, UK) y mercado estadounidense' },
-                { num: '3', title: 'Áreas especializadas', text: 'Amazon, Shopify e IA: el ecosistema completo del negocio online' },
-                { num: "15'", title: 'Para empezar', text: 'Una llamada de 30 minutos es suficiente para saber si podemos trabajar juntos' },
+                { num: '×3,4', title: 'Crecimiento en Amazon', text: 'De 500K a 1,7M€ en el canal de una marca líder nacional en tres años' },
+                { num: '×3,25', title: 'Canal Shopify propio', text: 'Sin invertir un euro en publicidad de pago' },
+                { num: '×5', title: 'Marketplace emergente', text: 'Canal de Miravia lanzado y escalado desde prácticamente cero' },
               ].map((w, i) => (
                 <div key={i} className="why-card">
                   <span className="why-card-num">{w.num}</span>
@@ -83,10 +118,10 @@ export default function Servicios() {
         <div className="container">
           <div className="cta-banner">
             <span className="section-eyebrow">¿Por dónde empezamos?</span>
-            <h2 style={{ marginTop: 16, marginBottom: 16 }}>Reserva tu diagnóstico gratuito</h2>
-            <p style={{ maxWidth: 540, margin: '0 auto 32px' }}>30 minutos. Sin compromiso. Con un plan real al final de la llamada. Solo para personas que van en serio con su negocio online.</p>
+            <h2 style={{ marginTop: 16, marginBottom: 16 }}>¿Tu negocio online te está dando los resultados que deseas?</h2>
+            <p style={{ maxWidth: 560, margin: '0 auto 32px' }}>En 30 minutos analizamos tu situación, identificamos los cuellos de botella y te digo exactamente qué hay que cambiar primero. Sin compromiso, sin pitch de ventas.</p>
             <CalendlyButton className="btn btn-primary btn-lg">
-              Reservar ahora <ArrowRight className="icon-lg" />
+              Reservar diagnóstico gratuito <ArrowRight className="icon-lg" />
             </CalendlyButton>
           </div>
         </div>
