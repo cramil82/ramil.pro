@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <div className="footer-logo">Ramil<span>.pro</span></div>
-            <p>Carlos Ramil — Consultor de eCommerce y Marca Personal. Amazon · Shopify · IA. España, Europa y EEUU.</p>
+            <p>Carlos Ramil — Growth Partner Online. Ayudo a marcas y negocios a crecer y vender más: webs, Amazon, Shopify y marketplaces. España, Europa y EEUU.</p>
             <div className="social-links">
               <a href="https://www.linkedin.com/in/carlos-ramil" target="_blank" rel="noopener" className="social-link" aria-label="LinkedIn">
                 <Linkedin size={18} />
@@ -21,6 +21,7 @@ export default function Footer() {
           <div className="footer-col">
             <h5>Servicios</h5>
             <ul>
+              <li><Link href="/servicios/webs-negocios">Webs y Negocios</Link></li>
               <li><Link href="/servicios/amazon">Amazon</Link></li>
               <li><Link href="/servicios/shopify">Shopify</Link></li>
               <li><Link href="/servicios/aplicaciones">Aplicaciones &amp; IA</Link></li>
@@ -30,6 +31,7 @@ export default function Footer() {
             <h5>Navegación</h5>
             <ul>
               <li><Link href="/">Inicio</Link></li>
+              <li><Link href="/growth-partner">Growth Partner</Link></li>
               <li><Link href="/servicios">Servicios</Link></li>
               <li><Link href="/contacto">Contacto</Link></li>
             </ul>
@@ -43,7 +45,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2025 Carlos Ramil · ramil.pro</p>
+          <p>© 2026 Carlos Ramil · ramil.pro</p>
           <div className="footer-bottom-links">
             <Link href="#">Aviso legal</Link>
             <Link href="#">Política de privacidad</Link>
