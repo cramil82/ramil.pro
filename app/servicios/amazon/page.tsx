@@ -57,17 +57,6 @@ export default function Amazon() {
                   <h4>La ventaja que pocos conocen</h4>
                   <p>La mayoría de sellers de Amazon no tienen lista de emails propia. Dependen 100% de Amazon. Te ayudo a montar el sistema para captar tu audiencia propia.</p>
                 </FadeIn>
-                <FadeIn className="card" delay={0.14}>
-                  <h4 style={{ marginBottom: 16 }}>Plazos orientativos</h4>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                    {[['Amazon SEO','2–4 semanas'],['PPC / Publicidad','Días'],['A+ Content','1–2 semanas']].map(([label, val], i, arr) => (
-                      <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem', paddingBottom: 12, borderBottom: i < arr.length-1 ? '1px solid var(--border)' : 'none' }}>
-                        <span style={{ color: 'var(--text-2)' }}>{label}</span>
-                        <span style={{ color: 'var(--accent)', fontWeight: 700 }}>{val}</span>
-                      </div>
-                    ))}
-                  </div>
-                </FadeIn>
                 <CalendlyButton className="btn btn-primary" style={{ justifyContent: 'center', padding: 15 }}>
                   Reservar diagnóstico gratuito <ArrowRight size={16} />
                 </CalendlyButton>
