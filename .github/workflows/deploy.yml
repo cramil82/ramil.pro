@@ -36,6 +36,13 @@ jobs:
     name: Build & Deploy
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # Si los secrets aún no están configurados, el job se salta (no falla).
+    # En cuanto añadas los 4 secrets en GitHub, el pipeline funciona automáticamente.
+    if: >
+      secrets.HOSTINGER_HOST != '' &&
+      secrets.HOSTINGER_USER != '' &&
+      secrets.HOSTINGER_SSH_KEY != '' &&
+      secrets.HOSTINGER_REMOTE_PATH != ''
 
     steps:
       # ── 1. Checkout ──────────────────────────────────────────────────────────
