@@ -84,11 +84,6 @@ jobs:
           HOST=$(printf '%s' "$SSH_HOST" | tr -d '[:space:]')
           USER=$(printf '%s' "$SSH_USER" | tr -d '[:space:]')
           DEST=$(printf '%s' "$REMOTE_PATH" | tr -d '[:space:]')
+          CMD="export NVM_DIR=\$HOME/.nvm; [ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"; cd ${DEST} && npm ci --omit=dev && (pm2 reload all --update-env 2>/dev/null || pm2 restart all 2>/dev/null || echo Reinicia-en-hPanel)"
           ssh -p "$SSH_PORT" -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
-            "${USER}@${HOST}" << REMOTE
-              export NVM_DIR="\$HOME/.nvm"
-              [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
-              cd "${DEST}"
-              npm ci --omit=dev
-              pm2 reload all --update-env 2>/dev/null || pm2 restart all 2>/dev/null || echo "Reinicia en hPanel"
-REMOTE
+            "${USER}@${HOST}" "$CMD"
