@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
@@ -105,10 +104,6 @@ export default function WebsNegocios() {
                       </div>
                     ))}
                   </div>
-                </FadeIn>
-                <FadeIn delay={0.21}>
-                  <Image src="/servicios-growth-partner.png" alt="Servicios Growth Partner" width={400} height={400}
-                    style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover', boxShadow: 'var(--shadow)', border: '1px solid var(--border)' }} />
                 </FadeIn>
                 <CalendlyButton className="btn btn-primary" style={{ justifyContent: 'center', padding: 15 }}>
                   Reservar diagnóstico gratuito <ArrowRight size={16} />
