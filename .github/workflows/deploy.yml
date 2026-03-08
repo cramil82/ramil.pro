@@ -38,7 +38,6 @@ jobs:
           mkdir -p ~/.ssh
           printf '%s\n' '${{ secrets.HOSTINGER_SSH_KEY }}' > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p ${{ env.SSH_PORT }} -H ${{ secrets.HOSTINGER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
 
       - name: Test SSH connection
         run: |
