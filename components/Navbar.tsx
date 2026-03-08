@@ -7,6 +7,7 @@ import {
   Package, ShoppingBag, Bot, Globe, ArrowRight,
   Home, Briefcase, Mail, ChevronDown, TrendingUp, BookOpen
 } from 'lucide-react';
+import CalendlyButton from './CalendlyButton';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -74,7 +75,7 @@ export default function Navbar() {
             <li><Link href="/contacto" className={isActive('/contacto') ? 'active' : ''}>Contacto</Link></li>
           </ul>
           <div className="nav-cta">
-            <Link href="/contacto" className="btn btn-primary btn-sm">Llamada Gratuita</Link>
+            <CalendlyButton className="btn btn-primary btn-sm">Llamada Gratuita</CalendlyButton>
           </div>
           <button
             className="nav-toggle"
@@ -98,9 +99,9 @@ export default function Navbar() {
         <Link href="/mentorias"><BookOpen size={16} /> Mentorías</Link>
         <Link href="/contacto"><Mail size={16} /> Contacto</Link>
         <div className="mobile-cta">
-          <Link href="/contacto" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+          <CalendlyButton className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
             Llamada Gratuita <ArrowRight size={16} />
-          </Link>
+          </CalendlyButton>
         </div>
       </div>
     </>
