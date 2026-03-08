@@ -34,21 +34,32 @@ jobs:
           NODE_ENV: production
 
       - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' '${{ secrets.HOSTINGER_SSH_KEY }}' > ~/.ssh/deploy_key
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
 
       - name: Test SSH connection
+        env:
+          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
+          SSH_USER: ${{ secrets.HOSTINGER_USER }}
         run: |
-          ssh -p ${{ env.SSH_PORT }} \
-            -i ~/.ssh/deploy_key \
-            -o StrictHostKeyChecking=no \
-            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
-            "echo 'SSH OK'"
+          HOST=$(printf '%s' "$SSH_HOST" | tr -d '[:space:]')
+          USER=$(printf '%s' "$SSH_USER" | tr -d '[:space:]')
+          ssh -p "$SSH_PORT" -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
+            "${USER}@${HOST}" "echo SSH_OK"
 
       - name: Sync files to Hostinger
+        env:
+          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
+          SSH_USER: ${{ secrets.HOSTINGER_USER }}
+          REMOTE_PATH: ${{ secrets.HOSTINGER_REMOTE_PATH }}
         run: |
+          HOST=$(printf '%s' "$SSH_HOST" | tr -d '[:space:]')
+          USER=$(printf '%s' "$SSH_USER" | tr -d '[:space:]')
+          DEST=$(printf '%s' "$REMOTE_PATH" | tr -d '[:space:]')
           rsync -azr --delete \
             --exclude='.git/' \
             --exclude='.github/' \
@@ -60,14 +71,19 @@ jobs:
             --exclude='*.log' \
             --exclude='*.md' \
             --exclude='*.docx' \
-            -e "ssh -p ${{ env.SSH_PORT }} -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+            -e "ssh -p $SSH_PORT -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
             ./ \
-            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_REMOTE_PATH }}/
+            "${USER}@${HOST}:${DEST}/"
 
       - name: Install prod deps & restart app
+        env:
+          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
+          SSH_USER: ${{ secrets.HOSTINGER_USER }}
+          REMOTE_PATH: ${{ secrets.HOSTINGER_REMOTE_PATH }}
         run: |
-          ssh -p ${{ env.SSH_PORT }} \
-            -i ~/.ssh/deploy_key \
-            -o StrictHostKeyChecking=no \
-            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
-            "cd ${{ secrets.HOSTINGER_REMOTE_PATH }} && npm ci --omit=dev && (pm2 reload all --update-env 2>/dev/null || pm2 restart all 2>/dev/null || echo 'Reinicia en hPanel')"
+          HOST=$(printf '%s' "$SSH_HOST" | tr -d '[:space:]')
+          USER=$(printf '%s' "$SSH_USER" | tr -d '[:space:]')
+          DEST=$(printf '%s' "$REMOTE_PATH" | tr -d '[:space:]')
+          ssh -p "$SSH_PORT" -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
+            "${USER}@${HOST}" \
+            "cd '${DEST}' && npm ci --omit=dev && (pm2 reload all --update-env 2>/dev/null || pm2 restart all 2>/dev/null || echo 'Reinicia en hPanel')"
