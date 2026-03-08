@@ -34,45 +34,41 @@ jobs:
           NODE_ENV: production
 
       - name: Configure SSH
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
-          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          printf '%s\n' '${{ secrets.HOSTINGER_SSH_KEY }}' > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -p ${{ env.SSH_PORT }} -H ${{ secrets.HOSTINGER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Test SSH connection
+        run: |
+          ssh -p ${{ env.SSH_PORT }} \
+            -i ~/.ssh/deploy_key \
+            -o StrictHostKeyChecking=no \
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
+            "echo 'SSH OK'"
 
       - name: Sync files to Hostinger
-        env:
-          SSH_USER: ${{ secrets.HOSTINGER_USER }}
-          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
-          REMOTE_PATH: ${{ secrets.HOSTINGER_REMOTE_PATH }}
         run: |
           rsync -azr --delete \
             --exclude='.git/' \
             --exclude='.github/' \
             --exclude='node_modules/' \
             --exclude='.env.local' \
-            --exclude='.env.*.local' \
             --exclude='.claude/' \
             --exclude='documentos/' \
             --exclude='screenshots/' \
             --exclude='*.log' \
             --exclude='*.md' \
             --exclude='*.docx' \
-            -e "ssh -p $SSH_PORT -i ~/.ssh/deploy_key" \
+            -e "ssh -p ${{ env.SSH_PORT }} -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
             ./ \
-            "$SSH_USER@$SSH_HOST:$REMOTE_PATH/"
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:${{ secrets.HOSTINGER_REMOTE_PATH }}/
 
       - name: Install prod deps & restart app
-        env:
-          SSH_USER: ${{ secrets.HOSTINGER_USER }}
-          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
-          REMOTE_PATH: ${{ secrets.HOSTINGER_REMOTE_PATH }}
         run: |
-          ssh -p "$SSH_PORT" -i ~/.ssh/deploy_key "$SSH_USER@$SSH_HOST" \
-            "set -e && \
-             cd '$REMOTE_PATH' && \
-             npm ci --omit=dev && \
-             (pm2 reload all --update-env 2>/dev/null || pm2 restart all 2>/dev/null || echo '⚠️ Reinicia manualmente en hPanel')"
+          ssh -p ${{ env.SSH_PORT }} \
+            -i ~/.ssh/deploy_key \
+            -o StrictHostKeyChecking=no \
+            ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
+            "cd ${{ secrets.HOSTINGER_REMOTE_PATH }} && npm ci --omit=dev && (pm2 reload all --update-env 2>/dev/null || pm2 restart all 2>/dev/null || echo 'Reinicia en hPanel')"
