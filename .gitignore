@@ -23,3 +23,17 @@ desktop.ini
 *.zip
 ideas.docx
 Tabajos Entregables.pdf
+
+# Claude Code — configuración local (no subir a git)
+.claude/settings.local.json
+
+# Archivos de trabajo y referencias que no forman parte del proyecto
+CEO_Agent_Prompt.md
+documentos/
+screenshots/
+
+# Imágenes duplicadas en raíz (los originales están en public/)
+amazon-market-topology.png
+shopify-growth-partner.png
+servicios.jpg
+FOTO-CARLOS.jpg

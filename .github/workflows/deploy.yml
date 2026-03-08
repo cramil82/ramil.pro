@@ -1,0 +1,127 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# GitHub Actions → Hostinger Business — Deploy automático
+#
+# SECRETS que debes añadir en GitHub → Settings → Secrets and variables → Actions:
+#
+#   HOSTINGER_HOST        Hostname SSH del servidor (ej: srv12345.hstgr.io)
+#                         Encuéntralo en hPanel → Hosting → SSH Access
+#
+#   HOSTINGER_USER        Usuario SSH (ej: u123456789)
+#                         Encuéntralo en hPanel → Hosting → SSH Access
+#
+#   HOSTINGER_SSH_KEY     Clave privada SSH completa, incluyendo las líneas
+#                         -----BEGIN OPENSSH PRIVATE KEY----- y -----END-----
+#                         Generarla: hPanel → SSH Keys Manager → Generate New Key
+#                         Copia el contenido de la clave PRIVADA aquí.
+#
+#   HOSTINGER_REMOTE_PATH Ruta absoluta al directorio de la app en el servidor
+#                         (ej: /home/u123456789/public_html)
+#
+# Hostinger Business usa el puerto SSH 65002, no el 22 estándar.
+# ──────────────────────────────────────────────────────────────────────────────
+
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Lanzar deploy manualmente desde la pestaña Actions de GitHub
+
+env:
+  NODE_VERSION: '20'
+  SSH_PORT: '65002' # Puerto SSH estándar de Hostinger (Business y superiores)
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────────
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ── 2. Node.js ───────────────────────────────────────────────────────────
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      # ── 3. Instalar dependencias ─────────────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      # ── 4. Build de Next.js ──────────────────────────────────────────────────
+      # El build se hace aquí en CI, no en Hostinger, para evitar límites de
+      # CPU/RAM del servidor. El .next/ resultante se sube ya compilado.
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      # ── 5. Preparar SSH ──────────────────────────────────────────────────────
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      # ── 6. Sincronizar archivos via rsync ────────────────────────────────────
+      # Qué se sube:
+      #   .next/          → build compilado (CSS, JS, chunks del servidor)
+      #   public/         → imágenes y assets estáticos
+      #   package.json    → necesario para npm ci en el servidor
+      #   package-lock.json
+      #   next.config.js
+      #
+      # Qué se excluye:
+      #   node_modules/   → se instalan en el servidor con npm ci --omit=dev
+      #   .git/ .github/  → metadatos de control de versiones
+      #   .claude/        → configuración local de Claude Code
+      #   archivos de desarrollo y logs
+      - name: Sync files to Hostinger
+        env:
+          SSH_USER: ${{ secrets.HOSTINGER_USER }}
+          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
+          REMOTE_PATH: ${{ secrets.HOSTINGER_REMOTE_PATH }}
+        run: |
+          rsync -azr --delete \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='node_modules/' \
+            --exclude='.env.local' \
+            --exclude='.env.*.local' \
+            --exclude='.claude/' \
+            --exclude='documentos/' \
+            --exclude='screenshots/' \
+            --exclude='*.log' \
+            --exclude='*.md' \
+            --exclude='*.docx' \
+            -e "ssh -p $SSH_PORT -i ~/.ssh/deploy_key" \
+            ./ \
+            "$SSH_USER@$SSH_HOST:$REMOTE_PATH/"
+
+      # ── 7. Instalar deps de producción y reiniciar la app ────────────────────
+      # npm ci --omit=dev instala solo dependencies (no devDependencies),
+      # lo que reduce el tiempo y uso de recursos en el servidor.
+      # pm2 es el gestor de procesos que usa Hostinger internamente.
+      - name: Install prod deps & restart app
+        env:
+          SSH_USER: ${{ secrets.HOSTINGER_USER }}
+          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
+          REMOTE_PATH: ${{ secrets.HOSTINGER_REMOTE_PATH }}
+        run: |
+          ssh -p "$SSH_PORT" -i ~/.ssh/deploy_key "$SSH_USER@$SSH_HOST" \
+            "set -e && \
+             cd '$REMOTE_PATH' && \
+             echo '→ Instalando dependencias de producción...' && \
+             npm ci --omit=dev && \
+             echo '→ Reiniciando app...' && \
+             (pm2 reload all --update-env 2>/dev/null || pm2 restart all 2>/dev/null || echo '⚠️  Reinicia manualmente en hPanel → Node.js → Restart') && \
+             echo '✓ Deploy completado.'"
