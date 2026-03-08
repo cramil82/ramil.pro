@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check, Users, Rocket, Target, BarChart2, TrendingUp, Zap, Clock, MessageSquare, BookOpen, ChevronRight } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
@@ -224,6 +225,15 @@ export default function Mentorias() {
               </FadeIn>
             </div>
             <aside className="gp-aside">
+              <FadeIn delay={0.05}>
+                <Image
+                  src="/servicios.jpg"
+                  alt="Carlos Ramil — Mentorías 1:1"
+                  width={400}
+                  height={480}
+                  style={{ width: '100%', height: 'auto', borderRadius: 'var(--radius-lg)', objectFit: 'cover', objectPosition: 'top', boxShadow: 'var(--shadow)', border: '1px solid var(--border)', marginBottom: 20 }}
+                />
+              </FadeIn>
               <FadeIn delay={0.1} className="highlight-box">
                 <h4>Mismo cerebro, diferente implicación</h4>
                 <p>No es una mentoría genérica de "mindset emprendedor". Es trabajo estratégico con alguien que ha triplicado canales de Amazon, multiplicado por tres Shopify sin publicidad y construido negocios desde cero.</p>

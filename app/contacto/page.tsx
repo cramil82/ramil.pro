@@ -91,7 +91,7 @@ export default function Contacto() {
           <div className="contact-form-photo">
             <ContactForm />
             <div className="contact-photo-aside">
-              <Image src="/CARLOS-PORTADA.png" alt="Carlos Ramil" width={320} height={400}
+              <Image src="/FOTO-CARLOS.jpg" alt="Carlos Ramil" width={320} height={400}
                 style={{ width: '100%', height: 'auto', borderRadius: 'var(--radius-lg)', objectFit: 'cover', objectPosition: 'top', boxShadow: 'var(--shadow)', border: '1px solid var(--border)' }} />
               <div className="whatsapp-box">
                 <h4>Escríbeme por WhatsApp</h4>

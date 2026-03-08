@@ -54,7 +54,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-image">
-            <Image src="/CARLOS-PORTADA.png" alt="Carlos Ramil — Growth Partner Online" width={520} height={600} priority />
+            <Image src="/FOTO-CARLOS.jpg" alt="Carlos Ramil — Growth Partner Online" width={520} height={600} priority />
             <div className="hero-image-badge">
               <span className="hero-image-badge-icon"><Zap className="icon-lg" /></span>
               <div className="hero-image-badge-text">
