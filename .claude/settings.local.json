@@ -9,7 +9,16 @@
       "Bash(open:*)",
       "Bash(git:*)",
       "Bash(gh:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npx next:*)",
+      "Bash(npx postcss:*)",
+      "Bash(lsof:*)",
+      "Bash(sort:*)",
+      "Bash(pkill:*)",
+      "Bash(find .next:*)",
+      "Bash(ls:*)",
+      "Bash(cp:*)",
+      "Bash(npm run:*)"
     ]
   }
 }
