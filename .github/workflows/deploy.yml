@@ -5,16 +5,11 @@ on:
     branches: [main]
   workflow_dispatch:
 
-env:
-  NODE_VERSION: '20'
-  SSH_PORT: '65002'
-  SSH_OPTS: '-o StrictHostKeyChecking=no -o ConnectTimeout=30'
-
 jobs:
   deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -23,57 +18,27 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      # Genera la carpeta out/ con HTML/CSS/JS estáticos puros
+      # Sin Node.js en producción — Hostinger sirve los archivos directamente
+      - name: Build static export
         run: npm run build
         env:
           NODE_ENV: production
 
-      - name: Configure SSH
-        env:
-          SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
-        run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-
-      - name: Sync files to Hostinger
-        env:
-          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
-          SSH_USER: ${{ secrets.HOSTINGER_USER }}
-          REMOTE_PATH: ${{ secrets.HOSTINGER_REMOTE_PATH }}
-        run: |
-          HOST=$(printf '%s' "$SSH_HOST" | tr -d '[:space:]')
-          USER=$(printf '%s' "$SSH_USER" | tr -d '[:space:]')
-          DEST=$(printf '%s' "$REMOTE_PATH" | tr -d '[:space:]')
-          rsync -azr --delete \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='node_modules/' \
-            --exclude='.env.local' \
-            --exclude='.claude/' \
-            --exclude='documentos/' \
-            --exclude='screenshots/' \
-            --exclude='*.log' \
-            --exclude='*.md' \
-            --exclude='*.docx' \
-            -e "ssh -p $SSH_PORT $SSH_OPTS -i ~/.ssh/deploy_key" \
-            ./ \
-            "${USER}@${HOST}:${DEST}/"
-
-      - name: Install prod deps & restart app
-        env:
-          SSH_HOST: ${{ secrets.HOSTINGER_HOST }}
-          SSH_USER: ${{ secrets.HOSTINGER_USER }}
-          REMOTE_PATH: ${{ secrets.HOSTINGER_REMOTE_PATH }}
-        run: |
-          HOST=$(printf '%s' "$SSH_HOST" | tr -d '[:space:]')
-          USER=$(printf '%s' "$SSH_USER" | tr -d '[:space:]')
-          DEST=$(printf '%s' "$REMOTE_PATH" | tr -d '[:space:]')
-          CMD="export NVM_DIR=\$HOME/.nvm; [ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"; cd ${DEST} && npm ci --omit=dev && (pm2 reload all --update-env 2>/dev/null || pm2 restart all 2>/dev/null || echo Reinicia-en-hPanel)"
-          ssh -p "$SSH_PORT" $SSH_OPTS -i ~/.ssh/deploy_key "${USER}@${HOST}" "$CMD"
+      # Sube out/ a public_html via FTP
+      # Sin SSH, sin PM2, sin fail2ban — solo transferencia de archivos
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.ramil.pro
+          username: ${{ secrets.HOSTINGER_FTP_USER }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: /public_html/
+          dangerous-clean-slate: true
