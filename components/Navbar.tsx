@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   Package, ShoppingBag, Bot, Globe, ArrowRight,
-  Home, Briefcase, Mail, ChevronDown, TrendingUp
+  Home, Briefcase, Mail, ChevronDown, TrendingUp, BookOpen
 } from 'lucide-react';
 
 export default function Navbar() {
@@ -70,6 +70,7 @@ export default function Navbar() {
                 </Link>
               </div>
             </li>
+            <li><Link href="/mentorias" className={isActive('/mentorias') ? 'active' : ''}>Mentorías</Link></li>
             <li><Link href="/contacto" className={isActive('/contacto') ? 'active' : ''}>Contacto</Link></li>
           </ul>
           <div className="nav-cta">
@@ -94,6 +95,7 @@ export default function Navbar() {
         <Link href="/servicios/amazon"><Package size={16} /> Amazon</Link>
         <Link href="/servicios/shopify"><ShoppingBag size={16} /> Shopify</Link>
         <Link href="/servicios/aplicaciones"><Bot size={16} /> Aplicaciones &amp; IA</Link>
+        <Link href="/mentorias"><BookOpen size={16} /> Mentorías</Link>
         <Link href="/contacto"><Mail size={16} /> Contacto</Link>
         <div className="mobile-cta">
           <Link href="/contacto" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>

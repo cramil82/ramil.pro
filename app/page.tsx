@@ -54,7 +54,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-image">
-            <Image src="/FOTO_PORTADA.jpg" alt="Carlos Ramil — Growth Partner Online" width={520} height={600} priority />
+            <Image src="/CARLOS-PORTADA.png" alt="Carlos Ramil — Growth Partner Online" width={520} height={600} priority />
             <div className="hero-image-badge">
               <span className="hero-image-badge-icon"><Zap className="icon-lg" /></span>
               <div className="hero-image-badge-text">
@@ -136,7 +136,7 @@ export default function Home() {
                 icon: <TrendingUp className="icon-xl" />,
                 chapter: 'Capítulo 2',
                 title: 'El gestor de marca',
-                text: 'Luego vine a trabajar desde dentro de una marca líder nacional. En tres años, tripliqué la cuenta de Amazon — de 500.000€ a 1.700.000€. Multipliqué por más de tres el canal Shopify sin invertir un euro en publicidad de pago. Y pusimos en marcha el canal de Miravia, que pasó de casi nada a cinco veces su tamaño inicial. Cada canal con su estrategia propia, pero todos empujando en la misma dirección: hacer crecer el negocio.',
+                text: 'Luego vine a trabajar desde dentro de una marca líder nacional. En un año y medio, tripliqué la cuenta de Amazon — de 500.000€ a 1.700.000€. Multipliqué por más de tres el canal Shopify sin invertir un euro en publicidad de pago. Y pusimos en marcha el canal de Miravia, que pasó de casi nada a cinco veces su tamaño inicial. Cada canal con su estrategia propia, pero todos empujando en la misma dirección: hacer crecer el negocio.',
               },
               {
                 icon: <Users className="icon-xl" />,

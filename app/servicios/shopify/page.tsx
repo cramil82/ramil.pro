@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
@@ -49,16 +50,9 @@ export default function Shopify() {
               <div style={{ position: 'sticky', top: 96, display: 'flex', flexDirection: 'column', gap: 20 }}>
                 <FadeIn className="highlight-box"><h4>El problema más común</h4><p>La mayoría de tiendas Shopify tienen tráfico. El problema es la conversión. Antes de invertir más en anuncios, necesitas saber por qué la gente no compra cuando llega.</p></FadeIn>
                 <FadeIn className="highlight-box" delay={0.07}><h4>Shopify Markets</h4><p>Si ya vendes en España y quieres expandirte a Europa, Shopify Markets es la herramienta. Múltiples monedas, idiomas y dominios desde una sola cuenta.</p></FadeIn>
-                <FadeIn className="card" delay={0.14}>
-                  <h4 style={{ marginBottom: 16 }}>Lo que puede cambiar</h4>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                    {[['Tasa de conversión','1% → 3%+'],['SEO visible en','4–8 semanas'],['Carrito recuperado','+15–25% ingresos']].map(([label, val], i, arr) => (
-                      <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem', paddingBottom: 12, borderBottom: i < arr.length-1 ? '1px solid var(--border)' : 'none' }}>
-                        <span style={{ color: 'var(--text-2)' }}>{label}</span>
-                        <span style={{ color: 'var(--accent)', fontWeight: 700 }}>{val}</span>
-                      </div>
-                    ))}
-                  </div>
+                <FadeIn delay={0.14}>
+                  <Image src="/shopify-growth-partner.png" alt="Shopify Growth Partner" width={400} height={400}
+                    style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover', boxShadow: 'var(--shadow)', border: '1px solid var(--border)' }} />
                 </FadeIn>
                 <CalendlyButton className="btn btn-primary" style={{ justifyContent: 'center', padding: 15 }}>Reservar diagnóstico gratuito <ArrowRight size={16} /></CalendlyButton>
               </div>

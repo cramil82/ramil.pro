@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
@@ -63,17 +64,6 @@ export default function WebsNegocios() {
                       'Integración de campañas de pago con el funnel orgánico',
                     ],
                   },
-                  {
-                    title: 'Estrategia de Crecimiento y Retención',
-                    items: [
-                      'Diagnóstico de negocio: embudos, métricas, propuesta de valor y posicionamiento',
-                      'Mapa de oportunidades y priorización de palancas de crecimiento',
-                      'Setup de analítica avanzada: Google Analytics 4, eventos y conversiones',
-                      'Estrategia de email marketing y automatizaciones de seguimiento',
-                      'Plan de fidelización y recurrencia para clientes actuales',
-                      'Acompañamiento en la ejecución con revisiones periódicas de KPIs',
-                    ],
-                  },
                 ].map((group, i) => (
                   <FadeIn key={i} className="services-group" delay={i * 0.08}>
                     <div className="services-group-title">{group.title}</div>
@@ -99,21 +89,26 @@ export default function WebsNegocios() {
                   <h4>Enfoque de Growth Partner</h4>
                   <p>No trabajo sobre un canal suelto. Analizo tráfico, conversión, publicidad y propuesta de valor al mismo tiempo, porque el cuello de botella rara vez está donde crees que está.</p>
                 </FadeIn>
-                <FadeIn className="card" delay={0.14}>
-                  <h4 style={{ marginBottom: 16 }}>Lo que puede cambiar</h4>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <FadeIn className="services-group" delay={0.14}>
+                  <div className="services-group-title">Estrategia de Crecimiento y Retención</div>
+                  <div className="service-items">
                     {[
-                      ['Tasa de conversión', '1% → 3%+'],
-                      ['Coste por lead', '−30–50%'],
-                      ['SEO visible en', '6–10 semanas'],
-                      ['Leads sin pagar', '+orgánico estable'],
-                    ].map(([label, val], i, arr) => (
-                      <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.875rem', paddingBottom: 12, borderBottom: i < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>
-                        <span style={{ color: 'var(--text-2)' }}>{label}</span>
-                        <span style={{ color: 'var(--accent)', fontWeight: 700 }}>{val}</span>
+                      'Diagnóstico de negocio: embudos, métricas, propuesta de valor y posicionamiento',
+                      'Mapa de oportunidades y priorización de palancas de crecimiento',
+                      'Setup de analítica avanzada: Google Analytics 4, eventos y conversiones',
+                      'Estrategia de email marketing y automatizaciones de seguimiento',
+                      'Plan de fidelización y recurrencia para clientes actuales',
+                      'Acompañamiento en la ejecución con revisiones periódicas de KPIs',
+                    ].map(item => (
+                      <div key={item} className="service-item">
+                        <span className="service-item-check"><Check size={14} /></span>{item}
                       </div>
                     ))}
                   </div>
+                </FadeIn>
+                <FadeIn delay={0.21}>
+                  <Image src="/servicios-growth-partner.png" alt="Servicios Growth Partner" width={400} height={400}
+                    style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover', boxShadow: 'var(--shadow)', border: '1px solid var(--border)' }} />
                 </FadeIn>
                 <CalendlyButton className="btn btn-primary" style={{ justifyContent: 'center', padding: 15 }}>
                   Reservar diagnóstico gratuito <ArrowRight size={16} />
